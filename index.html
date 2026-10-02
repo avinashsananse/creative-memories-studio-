@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative Memories Studio — Photography, Videography, Films and Reels.">
+  <title>Creative Memories Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="#home" class="brand"><img src="assets/logo.png" alt="Creative Memories Studio" class="brand-logo"></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+  <nav class="main-nav" id="mainNav">
+    <a href="#home">HOME</a><a href="#portfolio">PORTFOLIO</a><a href="#films">FILMS</a>
+    <a href="#reels">REELS</a><a href="#services">SERVICES</a><a href="#about">ABOUT</a>
+    <a href="#types">100+ TYPES</a><a href="#contact">CONTACT</a>
+    <a href="#booking" class="nav-book">BOOK NOW</a><a href="#login" class="nav-login">CLIENT LOGIN</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="eyebrow">CAPTURING MOMENTS • CREATING MEMORIES</p>
+    <h1>CREATIVE <span>MEMORIES</span></h1>
+    <div class="hero-studio">STUDIO</div><div class="gold-line"></div>
+    <p>Where Creativity Meets Memories</p>
+    <div class="hero-actions"><a href="#booking" class="btn btn-primary">BOOK YOUR SHOOT</a><a href="#portfolio" class="btn btn-outline">VIEW PORTFOLIO</a></div>
+  </div>
+</section>
+
+<section class="section" id="portfolio">
+  <div class="section-heading"><span>OUR WORK</span><h2>FEATURED PORTFOLIO</h2><p>A cinematic collection of visual stories.</p></div>
+  <div class="portfolio-grid" id="portfolioGrid"></div>
+</section>
+
+<section class="section dark-section" id="services">
+  <div class="section-heading"><span>WHAT WE DO</span><h2>OUR SERVICES</h2></div>
+  <div class="services-grid" id="servicesGrid"></div>
+</section>
+
+<section class="section" id="films">
+  <div class="section-heading"><span>CINEMATIC STORIES</span><h2>FEATURED FILMS</h2></div>
+  <div class="films-grid">
+    <article class="film-card"><div class="film-placeholder"><button class="play-button" data-video="Wedding Film">▶</button></div><div class="film-info"><h3>Wedding Film</h3><p>Cinematic storytelling</p></div></article>
+    <article class="film-card"><div class="film-placeholder"><button class="play-button" data-video="Brand Film">▶</button></div><div class="film-info"><h3>Brand Film</h3><p>Commercial storytelling</p></div></article>
+    <article class="film-card"><div class="film-placeholder"><button class="play-button" data-video="Travel Film">▶</button></div><div class="film-info"><h3>Travel Film</h3><p>Destination stories</p></div></article>
+    <article class="film-card"><div class="film-placeholder"><button class="play-button" data-video="Event Film">▶</button></div><div class="film-info"><h3>Event Film</h3><p>Live-event memories</p></div></article>
+  </div>
+</section>
+
+<section class="section dark-section" id="reels">
+  <div class="section-heading"><span>SHORT FORM CONTENT</span><h2>TRENDING REELS</h2></div>
+  <div class="reels-grid">
+    <div class="reel-placeholder">REEL 01 <button class="reel-play">▶</button></div>
+    <div class="reel-placeholder">REEL 02 <button class="reel-play">▶</button></div>
+    <div class="reel-placeholder">REEL 03 <button class="reel-play">▶</button></div>
+    <div class="reel-placeholder">REEL 04 <button class="reel-play">▶</button></div>
+  </div>
+</section>
+
+<section class="section" id="types">
+  <div class="section-heading"><span>CREATIVE SERVICES</span><h2>100+ SHOOT TYPES</h2><p>Search and explore the studio's service categories.</p></div>
+  <input id="typeSearch" class="search-box" placeholder="Search shoot types...">
+  <div id="typesGrid" class="types-grid"></div>
+</section>
+
+<section class="section" id="about">
+  <div class="about-content"><span>ABOUT CREATIVE MEMORIES STUDIO</span><h2>WE CAPTURE <strong>MEMORIES.</strong></h2>
+  <p>Photography, videography, films and reels under one creative studio.</p>
+  <p>Real moments transformed into visual stories.</p><a href="#contact" class="btn btn-outline">KNOW MORE</a></div>
+</section>
+
+<section class="section dark-section" id="testimonials">
+  <div class="section-heading"><span>CLIENT EXPERIENCES</span><h2>TESTIMONIALS</h2></div>
+  <div class="testimonial-box"><div class="quote">“</div><p id="testimonialText"></p><h3 id="testimonialName"></h3>
+    <div class="testimonial-controls"><button id="prevTestimonial">←</button><button id="nextTestimonial">→</button></div>
+  </div>
+</section>
+
+<section class="booking-section" id="booking">
+  <div class="booking-content"><span>LET'S CREATE</span><h2>SOMETHING AMAZING <strong>TOGETHER.</strong></h2>
+  <p>Send your project details and start your booking enquiry.</p>
+  <form id="bookingForm" class="booking-form">
+    <input required name="name" placeholder="Your name"><input required type="tel" name="phone" placeholder="Phone number">
+    <select required name="service"><option value="">Select service</option><option>Photography</option><option>Videography</option><option>Films</option><option>Reels</option></select>
+    <input required type="date" name="date"><textarea name="message" placeholder="Tell us about your project"></textarea>
+    <button class="btn btn-primary" type="submit">SEND BOOKING ENQUIRY</button>
+  </form>
+</div></section>
+
+<section class="section" id="contact">
+  <div class="section-heading"><span>GET IN TOUCH</span><h2>CONTACT US</h2></div>
+  <div class="contact-grid"><div><span>PHONE</span><strong>Add your phone number</strong></div><div><span>EMAIL</span><strong>Add your email</strong></div><div><span>LOCATION</span><strong>Add your studio location</strong></div><div><span>WHATSAPP</span><strong>Ready for enquiries</strong></div></div>
+</section>
+
+<section class="login-section" id="login">
+  <div class="login-box"><span>CLIENT PORTAL</span><h2>CLIENT LOGIN</h2><p>Secure authentication will be connected to the backend in the next phase.</p>
+  <button class="btn btn-outline" id="loginDemo">CLIENT LOGIN</button></div>
+</section>
+</main>
+
+<footer class="site-footer"><div class="footer-main"><div class="footer-brand"><img src="assets/logo.png" alt="Creative Memories Studio"><p>Photography • Videography • Films • Reels</p></div>
+<div class="footer-column"><h3>QUICK LINKS</h3><a href="#home">Home</a><a href="#portfolio">Portfolio</a><a href="#films">Films</a><a href="#reels">Reels</a></div>
+<div class="footer-column"><h3>SERVICES</h3><a href="#services">Photography</a><a href="#services">Videography</a><a href="#services">Film Production</a><a href="#services">Reels</a></div>
+<div class="footer-column"><h3>CONNECT</h3><a href="#contact">Instagram</a><a href="#contact">YouTube</a><a href="#contact">WhatsApp</a><a href="#contact">Email</a></div></div>
+<div class="footer-bottom">© 2026 Creative Memories Studio. All Rights Reserved.</div></footer>
+
+<div id="modal" class="modal" aria-hidden="true"><div class="modal-card"><button id="modalClose">✕</button><h2 id="modalTitle"></h2><p id="modalText"></p></div></div>
+<script src="data/portfolio.js"></script><script src="data/services.js"></script><script src="script.js"></script>
+</body>
+</html>
