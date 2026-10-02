@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Creative Memories Studio</title>
+
+  <!-- Typography inspired by your approved reference -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #ffffff;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(8,8,8,0.92);
+      border-bottom: 1px solid rgba(210,166,82,0.25);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      width: 190px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #d9a94f;
+    }
+
+    .book-btn {
+      background: linear-gradient(135deg, #e0a944, #b9781e);
+      color: #111;
+      padding: 13px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding-top: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(rgba(0,0,0,.42), rgba(0,0,0,.72)),
+        url("assets/hero.jpg") center/cover no-repeat;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 30px;
+    }
+
+    .tagline {
+      color: #d9b477;
+      font-size: 14px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(55px, 8vw, 105px);
+      line-height: .85;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 span {
+      color: #d7a54d;
+    }
+
+    .studio {
+      margin-top: 12px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      letter-spacing: 12px;
+      color: #eee;
+    }
+
+    .hero-line {
+      width: 260px;
+      height: 1px;
+      background: #c99a4b;
+      margin: 15px auto;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      padding: 15px 27px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: .5px;
+    }
+
+    .primary-btn {
+      background: #dba94f;
+      color: #111;
+    }
+
+    .secondary-btn {
+      border: 1px solid #c5964c;
+      color: white;
+    }
+
+    /* COMMON */
+    section {
+      padding: 55px 3%;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .section-title::after {
+      content: "";
+      height: 1px;
+      background: linear-gradient(to right, #bd8a43, transparent);
+      flex: 1;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+
+    .portfolio-card {
+      height: 150px;
+      border-radius: 7px;
+      overflow: hidden;
+      position: relative;
+      background: #181818;
+      border: 1px solid #383838;
+    }
+
+    .portfolio-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .4s;
+    }
+
+    .portfolio-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .card-label {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+      font-size: 13px;
+      text-shadow: 0 2px 5px #000;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 10px;
+    }
+
+    .service-card {
+      min-height: 125px;
+      border: 1px solid #454545;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      transition: .3s;
+    }
+
+    .service-card:hover {
+      border-color: #c99a4b;
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #d0a15c;
+    }
+
+    .service-card h3 {
+      font-size: 11px;
+      letter-spacing: .5px;
+    }
+
+    /* FILMS */
+    .films-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+    }
+
+    .film-card {
+      height: 185px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 7px;
+      border: 1px solid #3b3b3b;
+      background: #151515;
+    }
+
+    .film-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .film-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 35%, rgba(0,0,0,.9));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .play {
+      position: absolute;
+      top: 45%;
+      font-size: 30px;
+    }
+
+    .film-overlay h3 {
+      font-size: 13px;
+    }
+
+    .film-overlay p {
+      color: #bbb;
+      font-size: 9px;
+      margin-top: 3px;
+    }
+
+    /* REELS */
+    .reels-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+
+    .reel-card {
+      height: 190px;
+      border-radius: 7px;
+      overflow: hidden;
+      position: relative;
+      background: #191919;
+    }
+
+    .reel-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .reel-views {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      text-shadow: 0 1px 4px #000;
+    }
+
+    /* INFO */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr 1fr;
+      gap: 20px;
+    }
+
+    .info-box {
+      border: 1px solid #3d3d3d;
+      border-radius: 8px;
+      padding: 25px;
+      background: #111;
+    }
+
+    .info-box h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+
+    .info-box p,
+    .info-box li {
+      color: #bbb;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .info-box ul {
+      list-style: none;
+    }
+
+    .info-box li::before {
+      content: "●";
+      color: #d5a34e;
+      margin-right: 8px;
+    }
+
+    /* CTA */
+    .cta {
+      margin: 0 3% 30px;
+      padding: 30px 40px;
+      border: 1px solid #ad7b35;
+      border-radius: 7px;
+      background: linear-gradient(90deg, #16120c, #22180b);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cta h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+    }
+
+    .cta p {
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #292929;
+      padding: 35px 4%;
+      background: #080808;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    footer .logo {
+      width: 190px;
+      margin-bottom: 15px;
+    }
+
+    footer h4 {
+      color: #d5a34e;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+
+    footer a {
+      display: block;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 11px;
+      margin: 7px 0;
+    }
+
+    .copyright {
+      border-top: 1px solid #222;
+      margin-top: 25px;
+      padding-top: 18px;
+      text-align: center;
+      color: #666;
+      font-size: 10px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+
+      header {
+        height: 65px;
+        padding: 0 15px;
+      }
+
+      .logo {
+        width: 145px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .book-btn {
+        padding: 10px 13px;
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 90vh;
+      }
+
+      .hero h1 {
+        font-size: 55px;
+      }
+
+      .studio {
+        font-size: 22px;
+        letter-spacing: 8px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .films-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reels-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .studio {
+        font-size: 18px;
+      }
+
+      .portfolio-card {
+        height: 120px;
+      }
+
+      .film-card {
+        height: 150px;
+      }
+
+      .reel-card {
+        height: 155px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <!-- YOUR ORIGINAL PNG LOGO WILL BE USED HERE -->
+    <img src="assets/logo.png" class="logo" alt="Creative Memories Studio">
+
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#portfolio">PORTFOLIO</a>
+      <a href="#films">FILMS</a>
+      <a href="#reels">REELS</a>
+      <a href="#services">SERVICES</a>
+      <a href="#about">ABOUT</a>
+      <a href="#blog">BLOG</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <a href="#booking" class="book-btn">BOOK NOW</a>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="tagline">
+        CAPTURING MOMENTS<br>
+        CREATING MEMORIES
+      </div>
+
+      <h1>
+        CREATIVE<br>
+        <span>MEMORIES</span>
+      </h1>
+
+      <div class="studio">STUDIO</div>
+
+      <div class="hero-line"></div>
+
+      <p class="subtitle">
+        Where Creativity Meets Memories
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#booking" class="primary-btn">BOOK YOUR SHOOT</a>
+        <a href="#portfolio" class="secondary-btn">VIEW PORTFOLIO</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+
+    <div class="section-title">
+      <h2>FEATURED PORTFOLIO</h2>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <img src="assets/wedding.jpg" alt="Wedding">
+        <div class="card-label">WEDDING</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="assets/films.jpg" alt="Films">
+        <div class="card-label">FILMS</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="assets/commercial.jpg" alt="Commercial">
+        <div class="card-label">COMMERCIAL</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="assets/drone.jpg" alt="Drone">
+        <div class="card-label">DRONE</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="assets/portrait.jpg" alt="Portrait">
+        <div class="card-label">PORTRAIT</div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="assets/travel.jpg" alt="Travel">
+        <div class="card-label">TRAVEL</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+  <section id="services">
+
+    <div class="section-title">
+      <h2>OUR SERVICES</h2>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">📷</div>
+        <h3>PHOTOGRAPHY</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎥</div>
+        <h3>VIDEOGRAPHY</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎬</div>
+        <h3>FILM PRODUCTION</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">▶</div>
+        <h3>REELS & SHORTS</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">✂</div>
+        <h3>EDITING & POST</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🚁</div>
+        <h3>DRONE SERVICES</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">✦</div>
+        <h3>BRANDING & DESIGN</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">◎</div>
+        <h3>DIGITAL SOLUTIONS</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FILMS -->
+  <section id="films">
+
+    <div class="section-title">
+      <h2>FEATURED FILMS</h2>
+    </div>
+
+    <div class="films-grid">
+
+      <div class="film-card">
+        <img src="assets/film1.jpg" alt="">
+        <div class="film-overlay">
+          <div class="play">▶</div>
+          <h3>THE WEDDING TALE</h3>
+          <p>CINEMATIC WEDDING FILM</p>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <img src="assets/film2.jpg" alt="">
+        <div class="film-overlay">
+          <div class="play">▶</div>
+          <h3>ETERNAL PROMISE</h3>
+          <p>WEDDING FILM</p>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <img src="assets/film3.jpg" alt="">
+        <div class="film-overlay">
+          <div class="play">▶</div>
+          <h3>BRAND STORY</h3>
+          <p>CORPORATE FILM</p>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <img src="assets/film4.jpg" alt="">
+        <div class="film-overlay">
+          <div class="play">▶</div>
+          <h3>BEYOND BOUNDARIES</h3>
+          <p>TRAVEL FILM</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REELS -->
+  <section id="reels">
+
+    <div class="section-title">
+      <h2>TRENDING REELS</h2>
+    </div>
+
+    <div class="reels-grid">
+
+      <div class="reel-card">
+        <img src="assets/reel1.jpg" alt="">
+        <div class="reel-views">▶ 125K</div>
+      </div>
+
+      <div class="reel-card">
+        <img src="assets/reel2.jpg" alt="">
+        <div class="reel-views">▶ 90K</div>
+      </div>
+
+      <div class="reel-card">
+        <img src="assets/reel3.jpg" alt="">
+        <div class="reel-views">▶ 210K</div>
+      </div>
+
+      <div class="reel-card">
+        <img src="assets/reel4.jpg" alt="">
+        <div class="reel-views">▶ 175K</div>
+      </div>
+
+      <div class="reel-card">
+        <img src="assets/reel5.jpg" alt="">
+        <div class="reel-views">▶ 732K</div>
+      </div>
+
+      <div class="reel-card">
+        <img src="assets/reel6.jpg" alt="">
+        <div class="reel-views">▶ 90K</div>
+      </div>
+
+      <div class="reel-card">
+        <img src="assets/reel7.jpg" alt="">
+        <div class="reel-views">▶ 95K</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY / TESTIMONIAL / ABOUT -->
+  <section id="about">
+
+    <div class="info-grid">
+
+      <div class="info-box">
+
+        <h3>WHY CHOOSE US</h3>
+
+        <ul>
+          <li>Premium Quality</li>
+          <li>Cinematic Storytelling</li>
+          <li>Professional Team</li>
+          <li>Latest Equipment</li>
+          <li>On-Time Delivery</li>
+          <li>Client Satisfaction</li>
+        </ul>
+
+      </div>
+
+
+      <div class="info-box">
+
+        <h3>CLIENT TESTIMONIALS</h3>
+
+        <p>
+          “Creative Memories Studio has captured our most
+          beautiful moments in the most amazing way.
+          The team is professional, creative and very
+          cooperative.”
+        </p>
+
+      </div>
+
+
+      <div class="info-box">
+
+        <h3>ABOUT FOUNDER</h3>
+
+        <p>
+          Creative Memories Studio is built around
+          photography, videography and cinematic
+          storytelling.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section id="booking">
+
+    <div class="cta">
+
+      <div>
+        <h2>LET'S CREATE SOMETHING AMAZING TOGETHER</h2>
+        <p>Book your session now and let us capture your magic.</p>
+      </div>
+
+      <a href="#contact" class="primary-btn">
+        BOOK YOUR SHOOT NOW →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="contact">
+
+    <div class="footer-grid">
+
+      <div>
+        <img src="assets/logo.png" class="logo" alt="Creative Memories Studio">
+
+        <p style="color:#777;font-size:11px;">
+          Photography • Videography • Films • Reels
+        </p>
+      </div>
+
+
+      <div>
+        <h4>QUICK LINKS</h4>
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#films">Films</a>
+        <a href="#reels">Reels</a>
+      </div>
+
+
+      <div>
+        <h4>SERVICES</h4>
+        <a href="#services">Photography</a>
+        <a href="#services">Videography</a>
+        <a href="#services">Film Production</a>
+        <a href="#services">Reels & Shorts</a>
+      </div>
+
+
+      <div>
+        <h4>CONTACT</h4>
+        <a href="#">WhatsApp</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Email</a>
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Creative Memories Studio. All Rights Reserved.
+    </div>
+
+  </footer>
+
+</body>
+  </html>
